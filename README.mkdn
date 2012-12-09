@@ -3,7 +3,30 @@
 HOW-TO BUILD:
 =============
  
-**This short guide assumes you're on Ubuntu 11.04**
+**This short guide assumes you're on Ubuntu 12.04**
+
+Setting up a build environment on Ubuntu 12.04
+-----------------------------------------------
+Install java 6 JDK like this.
+
+    $ mkdir ~/src
+
+    $ cd ~/src
+
+    $ git clone https://github.com/flexiondotorg/oab-java6.git
+
+    $ cd ~/src/oab-java6
+
+    $ sudo ./oab-java.sh
+
+Then when its finished, install java packages you just built:
+
+    $ sudo apt-get install sun-java6-plugin sun-java6-jre sun-java6-bin sun-java6-jdk
+
+Then follow the guide on the AOSP Page:
+
+http://source.android.com/source/initializing.html
+
 
 Getting the (right) source
 --------------------------
@@ -26,11 +49,25 @@ Now initialized the repository and pull the source (with my repos attached):
 
     $ cd ~/android/system/
     
-    $ repo init -u git://github.com/playfulgod/android.git -b ics
+    $ repo init -u git://github.com/CyanogenMod/android.git -b jellybean
     
-    $ repo sync
+    $ repo sync -j10
 
 Depending on your connection, this might take awhile.
+
+Building TWRP Recovery
+------------
+   $ cd ~/android/system/bootable/
+
+   $ mv recovery ~/abackupfolderhere //probably a better way to do this.
+
+   $ git clone https://github.com/TeamWin/Team-Win-Recovery-Project.git ~/android/system/bootable/recovery
+
+   $ cd ~/android/system
+
+   $ lunch full_ls840-eng
+
+   $ make -j recoveryimage
 
 WIP - Extract necessary binaries and proprietary files 
 ------------------------------------------------
@@ -43,7 +80,7 @@ We will need to reuse some proprietary files from the stock ROM and build our ve
     
     $ ./extract-files.sh
 
-Building CM9
+Building CM10
 -------------
 Once thats done you can start compiling.
 
@@ -64,7 +101,7 @@ To build for the LG ls840:
     $ . build/envsetup.sh && brunch ls840
 
 
-Installing CM9
+Installing CM10
 ---------------
 If the build was successful, you can now take the update zip found in out/target/product/ls840/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
 
