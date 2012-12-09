@@ -7,7 +7,7 @@ HOW-TO BUILD:
 
 Setting up a build environment on Ubuntu 12.04
 -----------------------------------------------
-Install java 6 JDK like this.
+Install the Java 6 JDK like this.
 
     $ mkdir ~/src
 
@@ -19,7 +19,7 @@ Install java 6 JDK like this.
 
     $ sudo ./oab-java.sh
 
-Then when its finished, install java packages you just built:
+Then when its finished, install the java packages you just built:
 
     $ sudo apt-get install sun-java6-plugin sun-java6-jre sun-java6-bin sun-java6-jdk
 
