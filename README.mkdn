@@ -56,18 +56,18 @@ Now initialized the repository and pull the source (with my repos attached):
 Depending on your connection, this might take awhile.
 
 Building TWRP Recovery
-------------
-   $ cd ~/android/system/bootable/
+----------------------
+    $ cd ~/android/system/bootable/
 
-   $ mv recovery ~/abackupfolderhere //probably a better way to do this.
+    $ mv recovery ~/abackupfolderhere //probably a better way to do this.
 
-   $ git clone https://github.com/TeamWin/Team-Win-Recovery-Project.git ~/android/system/bootable/recovery
+    $ git clone https://github.com/TeamWin/Team-Win-Recovery-Project.git ~/android/system/bootable/recovery
 
-   $ cd ~/android/system
+    $ cd ~/android/system
 
-   $ lunch full_ls840-eng
+    $ lunch full_ls840-eng
 
-   $ make -j recoveryimage
+    $ make -j recoveryimage
 
 WIP - Extract necessary binaries and proprietary files 
 ------------------------------------------------
