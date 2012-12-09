@@ -67,3 +67,8 @@ BOARD_CACHE_FILESYSTEM_OPTIONS := nosuid,nodev,relatime,barrier=1,noauto_da_allo
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 
+#twrp
+DEVICE_RESOLUTION 	     := 480x800
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+TW_FLASH_FROM_STORAGE 	     := true
+
