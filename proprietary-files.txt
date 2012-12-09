@@ -1,4 +1,4 @@
-# MS840-4G Proprietary-Files.txt
+# ls840-4G Proprietary-Files.txt
 etc/firmware/vidc_1080p.fw
 lib/egl/libq3dtools_adreno200.so
 lib/egl/libGLESv2_adreno200.so

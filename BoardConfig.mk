@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/lge/ms840/BoardConfigVendor.mk
+-include vendor/lge/ls840/BoardConfigVendor.mk
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
@@ -33,19 +33,19 @@ BOARD_KERNEL_BASE := 0x40200000
 BOARD_KERNEL_PAGESIZE := 2048
 
 # partition sizes
-BOARD_BOOTIMAGE_PARTITION_SIZE 	   := 5690624
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 6048768
-BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1031798784
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 274464768
+BOARD_BOOTIMAGE_PARTITION_SIZE 	   := 10485760
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 1887436800
 BOARD_FLASH_BLOCK_SIZE 		   := 131072
 
 # kernel
-TARGET_PREBUILT_KERNEL := device/lge/ms840/kernel
+TARGET_PREBUILT_KERNEL := device/lge/ls840/kernel
 TARGET_KERNEL_CONFIG := plague_defconfig
 
 # recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/ms840/recovery/recovery_kernel
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ms840/recovery/graphics.c
+TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/ls840/recovery/recovery_kernel
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ls840/recovery/graphics.c
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Use this flag if the board has a ext4 partition larger than 2gb
@@ -55,12 +55,12 @@ BOARD_USES_MMCUTILS := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
 
-BOARD_DATA_DEVICE := /dev/block/mmcblk0p28
+BOARD_DATA_DEVICE := /dev/block/mmcblk0p29
 BOARD_DATA_FILESYSTEM := ext4
 BOARD_DATA_FILESYSTEM_OPTIONS := nosuid,nodev,relatime,barrier=1,noauto_da_alloc
-BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p26 BOARD_SYSTEM_FILESYSTEM_OPTIONS := noatime,nodiratime,barrier=1,noauto_da_alloc
+BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p27 BOARD_SYSTEM_FILESYSTEM_OPTIONS := noatime,nodiratime,barrier=1,noauto_da_alloc
 BOARD_SYSTEM_FILESYSTEM := ext4
-BOARD_CACHE_DEVICE := /dev/block/mmcblk0p27
+BOARD_CACHE_DEVICE := /dev/block/mmcblk0p28
 BOARD_CACHE_FILESYSTEM := ext4
 BOARD_CACHE_FILESYSTEM_OPTIONS := nosuid,nodev,relatime,barrier=1,noauto_da_alloc
 
