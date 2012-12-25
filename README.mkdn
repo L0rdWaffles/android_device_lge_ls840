@@ -2,8 +2,7 @@
 
 #### WORK IN PROGRESS #####
 
-<a href='http://jenkins.gitmanagement.tk/job/Something%20no%20one%20wants%20to%20do./'><img src='http://jenkins.gitmanagement.tk/job/Something%20no%20one%20wants%20to%20do./badge/icon'></a>
-
+<img>http://jenkins.gitmanagement.tk/job/CWM%20for%20the%20LG%20Viper%204G%20LTE/badge/icon</img>
 HOW-TO BUILD:
 =============
  
