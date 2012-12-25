@@ -1,9 +1,5 @@
-## Note that this is missing a lot of parts. ##
-
-#### WORK IN PROGRESS #####
-
-<img>http://jenkins.gitmanagement.tk/job/CWM%20for%20the%20LG%20Viper%204G%20LTE/badge/icon</img>
-HOW-TO BUILD:
+==Current CWM Build Status==
+<a href='http://jenkins.gitmanagement.tk/job/CWM%20for%20the%20LG%20Viper%204G%20LTE/'><img src='http://jenkins.gitmanagement.tk/job/CWM%20for%20the%20LG%20Viper%204G%20LTE/badge/icon'></a>HOW-TO BUILD:
 =============
  
 **This short guide assumes you're on Ubuntu 12.04**
