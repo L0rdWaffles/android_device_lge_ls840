@@ -12,15 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PACKAGE_OVERLAYS := device/samsung/d710/overlay \
-    device/samsung/galaxys2-common/overlay
-		
+DEVICE_PACKAGE_OVERLAYS := device/lge/ls840/overlay \
+    device/lge/ls840/overlay
+
 # Init files
 PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2-common/lpm.rc:root/lpm.rc \
-	device/samsung/d710/init.smdk4210.rc:root/init.smdk4210.rc \
-	device/samsung/galaxys2-common/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
+	device/lge/ls840/init.qcom.rc:root/init.qcom.rc \
+	device/lge/ls840/init.qcom.usb.rc:root/init.qcom.usb.rc \
+	device/lge/ls840/ueventd.cayman_sprint_us.rc:root/ueventd.cayman_sprint_us.rc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -47,63 +46,55 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
-	
+
 # Keylayout
 PRODUCT_COPY_FILES += \
-    device/samsung/d710/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/samsung/d710/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-    device/samsung/d710/usr/keylayout/max8997-muic.kl:system/usr/keylayout/max8997-muic.kl \
-    device/samsung/d710/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
-    device/samsung/d710/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/samsung/d710/usr/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
-    device/samsung/d710/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
-    device/samsung/d710/usr/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    device/samsung/d710/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/samsung/d710/usr/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
-    device/samsung/d710/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
-    device/samsung/d710/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
-    device/samsung/d710/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
-    device/samsung/d710/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
-    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
-    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
-    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
-    device/samsung/d710/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
-	
+    device/lge/ls840/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/lge/ls840/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
+    device/lge/ls840/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+    device/lge/ls840/usr/keylayout/touch_dev.kl:system/usr/keylayout/touch_dev.kl \
+    device/lge/ls840/usr/keylayout/touch-keypad.kl:system/usr/keylayout/touch-keypad.kl \
+    device/lge/ls840/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    device/lge/ls840/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
+    device/lge/ls840/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    device/lge/ls840/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    device/lge/ls840/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+    device/lge/ls840/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+    device/lge/ls840/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+    device/lge/ls840/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
+
 # Keychars
 PRODUCT_COPY_FILES += \
-   device/samsung/d710/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
-   device/samsung/d710/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-   device/samsung/d710/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-   device/samsung/d710/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
+   device/lge/ls840/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
+   device/lge/ls840/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+   device/lge/ls840/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+   device/lge/ls840/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
 
 #idc
 PRODUCT_COPY_FILES += \
-   device/samsung/d710/usr/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
-   device/samsung/d710/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
-   device/samsung/d710/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-   device/samsung/d710/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-   device/samsung/d710/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc 
+   device/lge/ls840/usr/idc/touch_dev.idc:system/usr/idc/touch-dev.idc \
+   device/lge/ls840/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
+   device/lge/ls840/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
 
 # Audio
-PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2-common/configs/asound.conf:system/etc/asound.conf
+# PRODUCT_COPY_FILES += \
+#	device/lge/ls840/configs/asound.conf:system/etc/asound.conf
     	
 # Misc	
-PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/apns-conf.xml:system/etc/apns-conf.xml
-	
+#PRODUCT_COPY_FILES += \
+#	device/lge/ls840/configs/apns-conf.xml:system/etc/apns-conf.xml
+
 # gps
-PRODUCT_COPY_FILES += \
-  device/samsung/d710/gpsfix:system/bin/gpsfix
-	
+# PRODUCT_COPY_FILES += \
+#  device/lge/ls840/gpsfix:system/bin/gpsfix
+
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-	
+
 # Vold
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/vold.fstab:system/etc/vold.fstab 
+	device/lge/ls840/configs/vold.fstab:system/etc/vold.fstab 
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -127,7 +118,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	   persist.service.usb.setting=0 \
 	   persist.service.adb.enable=1 \
 	   persist.sys.usb.config=mass_storage,adb
-	   
+
 # Telephony property for CDMA
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=14 \
@@ -142,14 +133,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.cdma.ppp.interface=ppp0 \
     net.connectivity.type=CDMA1 \
     mobiledata.interfaces=ppp0 \
-    ro.telephony.ril_class=SamsungCDMAv6RIL \
-    ro.ril.samsung_cdma=true \
     ro.carrier=Sprint	
-	
+
 # Gps
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/gps.conf:system/etc/gps.conf \
-	device/samsung/d710/configs/sirfgps.conf:system/etc/sirfgps.conf
+	device/lge/ls840/configs/gps.conf:system/etc/gps.conf \
+	device/lge/ls840/configs/sirfgps.conf:system/etc/sirfgps.conf
 
 # Packages
 PRODUCT_PACKAGES := \
@@ -160,15 +149,15 @@ PRODUCT_PACKAGES := \
 	GalaxyS2Settings \
 	SamsungServiceMode \
 	libsurfaceflinger_client
-	
+
 # Camera
 PRODUCT_PACKAGES += \
-	camera.exynos4
-	
+	camera.msm8660
+
 PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2-common/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/galaxys2-common/configs/media_codecs.xml:system/etc/media_codecs.xml
-	
+	device/lge/ls840/configs/media_profiles.xml:system/etc/media_profiles.xml \
+	device/lge/ls840/configs/media_codecs.xml:system/etc/media_codecs.xml
+
 # Charger
 PRODUCT_PACKAGES += \
     charger \
@@ -184,7 +173,7 @@ PRODUCT_PACKAGES += \
 	static_busybox \
 	make_ext4fs \
 	setup_fs
-	
+
 # WIMAX
 PRODUCT_PACKAGES += \
     WiMAXSettings \
@@ -195,17 +184,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
 	persist.service.usb.hubport=4
-	
+
 # MFC API
 PRODUCT_PACKAGES += \
     libsecmfcapi
-	
+
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/secomxregistry:system/etc/secomxregistry
+	device/lge/ls840/configs/secomxregistry:system/etc/secomxregistry
 
 PRODUCT_PACKAGES += \
     libstagefrighthw \
@@ -261,8 +250,8 @@ PRODUCT_LOCALES += hdpi
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
-$(call inherit-product-if-exists, vendor/samsung/galaxys2-common/common-vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/d710/d710-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/ls840/common-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/ls840/ls840-vendor.mk)
 $(call inherit-product-if-exists, vendor/common/common.mk)
 $(call inherit-product, hardware/samsung/exynos4210.mk)
 
