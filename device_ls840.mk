@@ -17,10 +17,9 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/d710/overlay \
 		
 # Init files
 PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2-common/lpm.rc:root/lpm.rc \
-	device/samsung/d710/init.smdk4210.rc:root/init.smdk4210.rc \
-	device/samsung/galaxys2-common/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
+	device/lge/ls840/init.qcom.rc:root/init.qcom.rc \
+	device/lge/ls840/init.qcom.usb.rc:root/init.qcom.usb.rc \
+	device/lge/ls840/ueventd.cayman_sprint_us.rc:root/ueventd.cayman_sprint_us.rc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -95,7 +94,7 @@ PRODUCT_COPY_FILES += \
 	
 # Vold
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/vold.fstab:system/etc/vold.fstab 
+	device/lge/ls840/configs/vold.fstab:system/etc/vold.fstab 
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -134,14 +133,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.cdma.ppp.interface=ppp0 \
     net.connectivity.type=CDMA1 \
     mobiledata.interfaces=ppp0 \
-    ro.telephony.ril_class=SamsungCDMAv6RIL \
-    ro.ril.samsung_cdma=true \
     ro.carrier=Sprint	
 	
 # Gps
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/gps.conf:system/etc/gps.conf \
-	device/samsung/d710/configs/sirfgps.conf:system/etc/sirfgps.conf
+	device/lge/ls840/configs/gps.conf:system/etc/gps.conf \
+	device/lge/ls840/configs/sirfgps.conf:system/etc/sirfgps.conf
 
 # Packages
 PRODUCT_PACKAGES := \
@@ -155,7 +152,7 @@ PRODUCT_PACKAGES := \
 	
 # Camera
 PRODUCT_PACKAGES += \
-	camera.exynos4
+	camera.msm8660
 	
 PRODUCT_COPY_FILES += \
 	device/samsung/galaxys2-common/configs/media_profiles.xml:system/etc/media_profiles.xml \
