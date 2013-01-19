@@ -52,15 +52,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/d710/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/samsung/d710/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-    device/samsung/d710/usr/keylayout/max8997-muic.kl:system/usr/keylayout/max8997-muic.kl \
-    device/samsung/d710/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
-    device/samsung/d710/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/samsung/d710/usr/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
-    device/samsung/d710/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
-    device/samsung/d710/usr/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    device/samsung/d710/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/samsung/d710/usr/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
-    device/samsung/d710/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
+    device/samsung/d710/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+    device/samsung/d710/usr/keylayout/touch_dev.kl:system/usr/keylayout/touch_dev.kl \
+    device/samsung/d710/usr/keylayout/touch-keypad.kl:system/usr/keylayout/touch-keypad.kl \
     device/samsung/d710/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
     device/samsung/d710/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
     device/samsung/d710/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
@@ -79,23 +73,21 @@ PRODUCT_COPY_FILES += \
 
 #idc
 PRODUCT_COPY_FILES += \
-   device/samsung/d710/usr/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
-   device/samsung/d710/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
+   device/samsung/d710/usr/idc/touch_dev.idc:system/usr/idc/touch-dev.idc \
    device/samsung/d710/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
    device/samsung/d710/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-   device/samsung/d710/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc 
 
 # Audio
-PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2-common/configs/asound.conf:system/etc/asound.conf
+# PRODUCT_COPY_FILES += \
+#	device/samsung/galaxys2-common/configs/asound.conf:system/etc/asound.conf
     	
 # Misc	
-PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/apns-conf.xml:system/etc/apns-conf.xml
+#PRODUCT_COPY_FILES += \
+#	device/samsung/d710/configs/apns-conf.xml:system/etc/apns-conf.xml
 	
 # gps
-PRODUCT_COPY_FILES += \
-  device/samsung/d710/gpsfix:system/bin/gpsfix
+# PRODUCT_COPY_FILES += \
+#  device/samsung/d710/gpsfix:system/bin/gpsfix
 	
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
