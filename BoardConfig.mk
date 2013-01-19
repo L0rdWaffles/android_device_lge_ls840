@@ -53,19 +53,11 @@ BOARD_USES_PROPRIETARY_LIBCAMERA := true
 #BOARD_USES_PROPRIETARY_LIBFIMC := true
 
 # Kernel Config
-TARGET_KERNEL_SOURCE := kernel/lge/ls840
+TARGET_KERNEL_SOURCE := ../../kernel/lge/ls840
 TARGET_KERNEL_CONFIG := cyanogenmod_ls840_defconfig
 
 # Notification LED
 BOARD_HAS_LED_NOTIF := true
-
-# OMX
-BOARD_HAVE_CODEC_SUPPORT := SAMSUNG_CODEC_SUPPORT
-COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CODEC_SUPPORT
-BOARD_NONBLOCK_MODE_PROCESS := true
-BOARD_USE_STOREMETADATA := true
-BOARD_USE_METADATABUFFERTYPE := true
-BOARD_USES_MFC_FPS := true
 
 # Partition Information
 BOARD_BOOTIMAGE_PARTITION_SIZE      := 10485760
@@ -94,11 +86,11 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_BOARD_PLATFORM := msm8660
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_BOOTLOADER_BOARD_NAME := msm8660
-TARGET_BOARD_INFO_FILE := device/lge/ls840/board-info.txt
+TARGET_BOARD_INFO_FILE := ../../device/lge/ls840/board-info.txt
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
-#TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/ls840/recovery/recovery_kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := ../../device/lge/ls840/recovery/recovery_kernel
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lge/ls840/recovery/recovery_keys.c
 BOARD_HAS_NO_MISC_PARTITION := false
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ls840/recovery/graphics.c
