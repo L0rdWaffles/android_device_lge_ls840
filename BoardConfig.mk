@@ -52,7 +52,7 @@ BOARD_USES_PROPRIETARY_LIBCAMERA := true
 #BOARD_USES_PROPRIETARY_LIBFIMC := true
 
 # Kernel Config
-TARGET_KERNEL_SOURCE := ../../kernel/lge/ls840
+TARGET_KERNEL_SOURCE := kernel/lge/ls840
 TARGET_KERNEL_CONFIG := cyanogenmod_ls840_defconfig
 
 # Notification LED
