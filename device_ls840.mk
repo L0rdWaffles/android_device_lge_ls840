@@ -85,12 +85,11 @@ PRODUCT_COPY_FILES += \
 #	device/lge/ls840/configs/asound.conf:system/etc/asound.conf
     	
 # Misc	
-#PRODUCT_COPY_FILES += \
-#	device/lge/ls840/configs/apns-conf.xml:system/etc/apns-conf.xml
+# Get the long list of APNs
+PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
-# gps
-# PRODUCT_COPY_FILES += \
-#  device/lge/ls840/gpsfix:system/bin/gpsfix
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
@@ -152,6 +151,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # QCOM Display
 PRODUCT_PACKAGES += \
+    camera.msm8660 \
     copybit.msm8660 \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
@@ -170,9 +170,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	camera.msm8660
 
-PRODUCT_COPY_FILES += \
-	device/lge/ls840/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/lge/ls840/configs/media_codecs.xml:system/etc/media_codecs.xml
+# Codecs
+# PRODUCT_COPY_FILES += \
+#	device/lge/ls840/configs/media_profiles.xml:system/etc/media_profiles.xml \
+#	device/lge/ls840/configs/media_codecs.xml:system/etc/media_codecs.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -206,11 +207,11 @@ PRODUCT_PACKAGES += \
     libsecmfcapi
 
 # Include exynos4 platform specific parts
-TARGET_HAL_PATH := hardware/samsung/exynos4/hal
-TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
+#TARGET_HAL_PATH := hardware/samsung/exynos4/hal
+#TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 
-PRODUCT_COPY_FILES += \
-	device/lge/ls840/configs/secomxregistry:system/etc/secomxregistry
+#PRODUCT_COPY_FILES += \
+#	device/lge/ls840/configs/secomxregistry:system/etc/secomxregistry
 
 PRODUCT_PACKAGES += \
     libstagefrighthw \
@@ -269,58 +270,4 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 $(call inherit-product-if-exists, vendor/lge/ls840/common-vendor.mk)
 $(call inherit-product-if-exists, vendor/lge/ls840/ls840-vendor.mk)
 $(call inherit-product-if-exists, vendor/common/common.mk)
-$(call inherit-product, hardware/samsung/exynos4210.mk)
-
-======
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
-$(call inherit-product-if-exists, vendor/lge/ls840/ls840-vendor.mk)
-
-DEVICE_PACKAGE_OVERLAYS += device/lge/ls840/overlay
-
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lge/ls840/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-
-
-$(call inherit-product, build/target/product/full.mk)
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_ls840
-PRODUCT_DEVICE := ls840
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml
-
-# Get the long list of APNs
-PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
-
-# Camera
-PRODUCT_PACKAGES := \
-    Camera
-
