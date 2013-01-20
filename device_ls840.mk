@@ -21,6 +21,10 @@ PRODUCT_COPY_FILES += \
 	device/lge/ls840/init.qcom.usb.rc:root/init.qcom.usb.rc \
 	device/lge/ls840/ueventd.cayman_sprint_us.rc:root/ueventd.cayman_sprint_us.rc
 
+# Recovery Reboot Fix
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -92,6 +96,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
+# Omx
+PRODUCT_PACKAGES += \
+    libdivxdrmdecrypt \
+    libmm-omxcore \
+    libOmxCore \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libstagefrighthw
+
 # Vold
 PRODUCT_COPY_FILES += \
 	device/lge/ls840/configs/vold.fstab:system/etc/vold.fstab 
@@ -135,20 +150,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=ppp0 \
     ro.carrier=Sprint	
 
+# QCOM Display
+PRODUCT_PACKAGES += \
+    copybit.msm8660 \
+    gralloc.msm8660 \
+    hwcomposer.msm8660 \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libQcomUI \
+    libtilerenderer
+
 # Gps
 PRODUCT_COPY_FILES += \
 	device/lge/ls840/configs/gps.conf:system/etc/gps.conf \
 	device/lge/ls840/configs/sirfgps.conf:system/etc/sirfgps.conf
-
-# Packages
-PRODUCT_PACKAGES := \
-    TvOut \
-	audio.a2dp.default \
-	com.android.future.usb.accessory \
-	smdk4210_hdcp_keys \
-	GalaxyS2Settings \
-	SamsungServiceMode \
-	libsurfaceflinger_client
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -165,8 +181,8 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-	lights.exynos4 \
-	sensors.exynos4
+	lights.msm8660 \
+	sensors.msm8660
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -276,8 +292,7 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+
 
 $(call inherit-product, build/target/product/full.mk)
 
@@ -309,28 +324,3 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 PRODUCT_PACKAGES := \
     Camera
 
-# QCOM Display
-PRODUCT_PACKAGES += \
-    copybit.msm8660 \
-    gralloc.msm8660 \
-    hwcomposer.msm8660 \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libQcomUI \
-    libtilerenderer
-
-# Omx
-PRODUCT_PACKAGES += \
-    libdivxdrmdecrypt \
-    libmm-omxcore \
-    libOmxCore \
-    libOmxVdec \
-    libOmxVenc \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libstagefrighthw
-
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
