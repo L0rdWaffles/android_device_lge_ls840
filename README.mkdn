@@ -12,35 +12,26 @@
 ####Current CM9 Build Status
 
 -----------------------------------------------
-
-<WIP>
-
-
-
 HOW-TO BUILD:
 =============
  
-**This short guide assumes you're on Ubuntu 12.04**
+**This short guide assumes you're on Ubuntu 10.04**
 
-Setting up a build environment on Ubuntu 12.04
+Setting up a build environment on Ubuntu 10.04
 -----------------------------------------------
 Install the Java 6 JDK like this.
 
-    $ mkdir ~/src
+    $ mkdir ~/java
 
-    $ cd ~/src
+    $ cd ~/java
 
-    $ git clone https://github.com/flexiondotorg/oab-java6.git
+    $ git clone https://github.com/thenameisnigel/oab-java6.git
 
-    $ cd ~/src/oab-java6
+    $ cd ~/java/oab-java6
 
     $ sudo ./oab-java.sh
 
-Then when its finished, install the java packages you just built:
-
-    $ sudo apt-get install sun-java6-plugin sun-java6-jre sun-java6-bin sun-java6-jdk
-
-Then follow the guide on the AOSP Page:
+Then when its finished, follow the guide on the AOSP Page:
 
 http://source.android.com/source/initializing.html
 
@@ -50,15 +41,13 @@ Getting the (right) source
 
 First, we need to create directories for the build (system can be whatever you want to name your working directory):
 
-    $ mkdir -p ~/bin
-
     $ mkdir -p ~/android/system
 
 Now we'll need repo. Let's download it and make it executable:
 
-    $ curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
+    $ sudo curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > /usr/bin/repo
 
-    $ chmod a+x ~/bin/repo
+    $ sudo chmod a+x /usr/bin/repo
 
 Log out and back in so the changes take effect.
 
@@ -66,25 +55,12 @@ Now initialized the repository and pull the source (with my repos attached):
 
     $ cd ~/android/system/
     
-    $ repo init -u git://github.com/CyanogenMod/android.git -b jellybean
+    $ repo init -u git://github.com/CyanogenMod/android.git -b ics
     
-    $ repo sync -j10
+    $ repo sync -j4
 
 Depending on your connection, this might take awhile.
 
-Building TWRP Recovery
-----------------------
-    $ cd ~/android/system/bootable/
-
-    $ mv recovery ~/abackupfolderhere //probably a better way to do this.
-
-    $ git clone https://github.com/TeamWin/Team-Win-Recovery-Project.git ~/android/system/bootable/recovery
-
-    $ cd ~/android/system
-
-    $ lunch full_ls840-eng
-
-    $ make -j recoveryimage
 
 WIP - Extract necessary binaries and proprietary files 
 ------------------------------------------------
