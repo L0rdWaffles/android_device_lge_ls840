@@ -1,0 +1,164 @@
+import init.iproj.rc
+import init.lge.rc
+
+on boot-pause
+    exec system/bin/battery_charging
+
+on init
+#LGSI_ICS_UPDATE_S::<sinjo.mattappallil@lge.com><25/05/2012><partition changes based on GB>
+    setprop system_part_name	/dev/block/mmcblk0p27
+    setprop tombstone_part_name	/dev/block/mmcblk0p22
+    setprop data_part_name	/dev/block/mmcblk0p29
+    setprop persist_part_name	/dev/block/mmcblk0p12
+    setprop cache_part_name	/dev/block/mmcblk0p28
+    setprop mpt_part_name	/dev/block/mmcblk0p31
+	setprop drm_part_name   /dev/block/mmcblk0p23
+	setprop bsp_part_name   /dev/block/mmcblk0p20
+	setprop enc_part_name	/dev/block/mmcblk0p32
+#	setprop lge_rc_part_name /dev/block/mmcblk0p30   # FEATURE_SDCARD_ENCRYPTION
+	setprop ro.crypto.keyfile.userdata /dev/block/mmcblk0p30  # FEATURE_SDCARD_ENCRYPTION
+    	setprop ro.ssbd.session 	/dev/block/mmcblk0p30	# FEATURE_SDCARD_ENCRYPTION
+	setprop ro.ssbd.offset 	40   #FEATURE_SDCARD_ENCRYPTION 
+    
+    export system_part_name	/dev/block/mmcblk0p27
+    export tombstone_part_name	/dev/block/mmcblk0p22
+    export data_part_name	/dev/block/mmcblk0p29
+    export persist_part_name	/dev/block/mmcblk0p12
+    export cache_part_name	/dev/block/mmcblk0p28
+    export mpt_part_name	/dev/block/mmcblk0p31
+    export drm_part_name	/dev/block/mmcblk0p23 
+	export bsp_part_name    /dev/block/mmcblk0p20
+	export enc_part_name	/dev/block/mmcblk0p32
+#	export lge_rc_part_name /dev/block/mmcblk0p30    # FEATURE_SDCARD_ENCRYPTION
+	export ro.crypto.keyfile.userdata /dev/block/mmcblk0p30	# FEATURE_SDCARD_ENCRYPTION
+ 
+
+#LGSI_ICS_UPDATE_E::<sinjo.mattappallil@lge.com><25/05/2012><partition changes based on GB>
+on post-fs-data
+    chmod 0755 /system/bin/ssbd
+    service ssbd /system/bin/ssbd # FEATURE_SDCARD_ENCRYPTION
+    class main
+    disabled # add
+    
+    on property:ssbd.enable=1 # FEATURE_SDCARD_ENCRYPTION
+    start ssbd
+    on property:ssbd.enable=0 # FEATURE_SDCARD_ENCRYPTION
+    stop ssbd
+    
+
+on boot
+    
+    #NFC 2012-08-09, addy.kim@lge.com , set nfc drv file permission 600
+    setprop ro.nfc.port "I2C"
+    chmod 0600 /dev/pn544
+    chown nfc nfc /dev/pn544
+
+#LGSI_ICS_UPDATE_S::<krishnakanth.satpadi@lge.com><2012-JUL-19><Initial FOTAUA Integration><START>
+#commented this mmcblk0 should have permissions only to fota and System
+#    chown system system  /dev/block/mmcblk0
+#    chmod 0660 /dev/block/mmcblk0
+#LGSI_ICS_UPDATE_S::<krishnakanth.satpadi@lge.com><2012-JUL-19><Initial FOTAUA Integration><END>
+
+    chown system system /sys/module/lge_emmc_direct_access/parameters/rooting_nv
+    chmod 0660 /sys/module/lge_emmc_direct_access/parameters/rooting_nv
+
+    chown system system  /sys/module/lge_emmc_direct_access/parameters/eri_info
+    chmod 0660 /sys/module/lge_emmc_direct_access/parameters/eri_info
+
+    chown system system /sys/module/lge_emmc_direct_access/parameters/cryptfs_cmd
+    chmod 0770 /sys/module/lge_emmc_direct_access/parameters/cryptfs_cmd
+
+    chown system system  /sys/module/lge_emmc_direct_access/parameters/bootcmd_write_block
+    chmod 0660 /sys/module/lge_emmc_direct_access/parameters/bootcmd_write_block
+    # LGE_ERI_DOWNLOAD
+    mkdir /data/eri
+    chown radio radio /data/eri
+    chmod 0777 /data/eri
+    chown radio radio /data/eri/eri.bin
+    chmod 0777 /data/eri/eri.bin
+    # [LGE_S][IPSecVPN] 20120327, yhak.kim@lge.com : Authentec IPSecVPN Kernel Module install
+    insmod /system/lib/modules/vpnclient.ko
+    # [LGE_E][IPSecVPN] 20120327, yhak.kim@lge.com : Authentec IPSecVPN Kernel Module install
+    # [LG_UPDATE_S] 20120611,sinjo.mattappallil@lge.com : for slate feature
+    mkdir /data/img 0755 system system       
+    # [LG_UPDATE_E] 20120611,sinjo.mattappallil@lge.com : for slate feature
+
+    # Create the directories used by the Wireless subsystem
+    #mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi 0775 wifi system
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+    chmod 0660 /data/misc/wifi/hostapd.conf
+
+#CRYPT_S Data Encryption For EAS
+on property:persist.sys.email.crypt=1
+    exec /system/bin/crypt_setup 1
+#CRYPT_E
+
+on post-fs-data
+    chown system system /persist
+    chmod 0771 /persist
+
+    mkdir /persist/app_dme 0771 system system
+    chown system system /persist/app_dme
+    chmod 0771 /persist/app_dme
+
+    mkdir /data/fota 0770 system system
+    chown system system /data/fota
+    chmod 0770 /data/fota
+    chmod 0666 /data/fota/silence.txt
+
+    mkdir /cache/recovery 0774
+    chown system cache /cache/recovery
+    mkdir /cache/recovery/fota 0774
+    chown system system /cache/recovery/fota
+    chmod 0774 /cache/recovery/fota
+
+//[MFW] START, 120712, madhusudan.b@lge.com, sprint proxy backup implementation
+# [MFW] START, 120514, minu.kim@lge.com
+	mkdir /data/omadm 0777 system system
+	chown system system /data/omadm
+	chmod 0777 /data/omadm
+	mkdir /mpt/omadm 0777 system system
+	chown system system /mpt/omadm
+	chmod 0777 /mpt/omadm
+# [MFW] END, 120514, minu.kim@lge.com
+//[MFW] END, 120712, madhusudan.b@lge.com, sprint proxy backup implementation
+#    mkdir /cache/fota 0777
+#    chown system system /cache/fota
+#    chmod 0777 /cache/fota
+#    setprop vold.post_fs_data_done 1 # FEATURE_SDCARD_ENCRYPTION
+
+# matthew.choi@lge.com 120618 LGE_FOTA move fota related files from userdata to /cache/fota      
+    mkdir /cache/fota
+    mkdir /cache/fota/files
+    chmod 0755 /cache/fota
+    chmod 0755 /cache/fota/files
+    chown lg_fota /cache/fota
+    chown lg_fota /cache/fota/files
+    
+# [LGE_S][IPSecVPN] 20120327, yhak.kim@lge.com : Authentec IPSecVPN Service & IPSecVpn modules permission change
+service vpnclientpm /system/bin/vpnclientpm -O /data/data/com.ipsec.vpnclient/vpnclientpm.txt
+# uid dropped to system when capabilities are set
+    class main
+    group system net_admin net_raw
+    disabled
+
+service vpncstarter /system/bin/vpncstarter
+    class main
+    user system
+    group system net_admin net_raw
+# [LGE_E][IPSecVPN] 20120327, yhak.kim@lge.com : Authentec IPSecVPN Service & IPSecVpn modules permission change
+
+
+on innopath-fota-boot
+    exec /system/bin/innopath_fota_boot
+
+on usb_enable
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 1004
+    write /sys/class/android_usb/android0/idProduct 6300
+    write /sys/class/android_usb/android0/functions charge_only
+    write /sys/class/android_usb/android0/enable 1 

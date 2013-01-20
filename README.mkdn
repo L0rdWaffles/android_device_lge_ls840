@@ -41,7 +41,7 @@ Getting the (right) source
 
 First, we need to create directories for the build (system can be whatever you want to name your working directory):
 
-    $ mkdir -p ~/android/system
+    $ mkdir -p ~/android
 
 Now we'll need repo. Let's download it and make it executable:
 
@@ -49,11 +49,9 @@ Now we'll need repo. Let's download it and make it executable:
 
     $ sudo chmod a+x /usr/bin/repo
 
-Log out and back in so the changes take effect.
-
 Now initialized the repository and pull the source (with my repos attached):
 
-    $ cd ~/android/system/
+    $ cd ~/android
     
     $ repo init -u git://github.com/CyanogenMod/android.git -b ics
     
@@ -62,18 +60,34 @@ Now initialized the repository and pull the source (with my repos attached):
 Depending on your connection, this might take awhile.
 
 
-WIP - Extract necessary binaries and proprietary files 
+Making your local manifest
 ------------------------------------------------
 
-We will need to reuse some proprietary files from the stock ROM and build our vendor tree (script(s) do it all ;):
+Now let's get some required stuff.
 
-    $ cd
-    
-    $ cd ~/android/system/device/lge/ls840
-    
-    $ ./extract-files.sh
+Open terminal and type the following stuff:
 
-Building CM10
+	$ geany ~/android/.repo/local_manifest.xml
+	
+Once that opens, copy and paste the following:
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+  <manifest>
+    <project name="EpicCM/d710tools.git" path="d710tools" remote="github" revision="ics" />
+    <project name="ViperCM/android_device_lge_ls840" path="device/lge/ls840" remote="github" revision="jb" />
+    <project name="thenameisnigel/android_kernel_lge_ls840" path="kernel/lge/ls840" remote="github" revision="ics" />
+    <project name="ProjectVendor/proprietary_vendor_lge" path="vendor/lge" remote="github" revision="ics" />
+    <project name="EpicCM/android_device_samsung_d710" path="device/samsung/d710" remote="github" revision="smdk" />
+    <project name="CyanogenMod/android_device_htc_msm8660-common" path="device/htc/msm8660-common" remote="github" revision="ics" />
+    <project name="CyanogenMod/android_hardware_qcom_audio" path="hardware/qcom/audio" remote="github" revision="ics" />
+    <project name="EpicAOSP/android_kernel_samsung_smdk4210_new" path="kernel/samsung/smdk4210" remote="github" revision="ics" />
+    <project name="mcrosson/android_packages_apps_CMFileManager" path="packages/apps/CMFileManager" remote="github" revision="ics" />
+    <project name="CyanogenMod/android_packages_apps_SamsungServiceMode" path="packages/apps/SamsungServiceMode" remote="github" revision="ics" />
+  </manifest>
+
+
+Building CM9
 -------------
 Once thats done you can start compiling.
 
@@ -81,17 +95,18 @@ Follow the aosp instructions on setting up the build environment. - http://sourc
 
 When the environment is setup, we need to grab a copy of Koush's ROM Manager and the Term.apk. This is necessary to build CM9.
 
-    $ cd ~/android/system/vendor/cm
+    $ vendor/cm/get-prebuilts
 
-    $ ./get-prebuilts
 
-Now, we build (android/system being your work directory path):
+Now, we build (android being your work directory path):
 
-    $ cd ~/android/system
+    $ cd ~/android
 
-To build for the LG ls840:
+To build for the LG LS840:
     
-    $ . build/envsetup.sh && brunch ls840
+    $ . build/envsetup.sh
+    
+    $ lunch 5
 
 
 Installing CM10
