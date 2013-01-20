@@ -90,7 +90,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
 TARGET_PREBUILT_RECOVERY_KERNEL := ../../device/lge/ls840/recovery/recovery_kernel
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lge/ls840/recovery/recovery_keys.c
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lge/ls840/recovery/recovery_keys.c
 BOARD_HAS_NO_MISC_PARTITION := false
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ls840/recovery/graphics.c
 BOARD_HAS_NO_SELECT_BUTTON := true
